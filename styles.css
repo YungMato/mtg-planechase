@@ -1,6 +1,14 @@
 #fieldwrapper {
+    position: absolute;
+    z-index: 1;
+
+    height: 90vh;
+    width: 100vh;
+
+    left: 20%;
+
     display: grid; 
-    gap: 10px;
+    gap:10px;
     grid-template-columns: 1fr 1fr 1fr; 
     grid-template-rows: 1fr 1fr 1fr; 
 }
@@ -10,16 +18,30 @@
     justify-content: center;
     align-items: center;
 
-    background-color: lightgrey;
     height: 30vh;
 
     :hover {
         cursor: pointer;
-        scale: 1.5;
     }
 }
 
 .card {
     height: 100%;
+}
+
+#highlightCard{
+    background-color: yellow;
+
+    height: 90vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        position: relative;
+        z-index: 5;
+    }
 }
 
