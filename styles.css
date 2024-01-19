@@ -1,0 +1,25 @@
+#fieldwrapper {
+    display: grid; 
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+}
+
+.cardfield {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: lightgrey;
+    height: 30vh;
+
+    :hover {
+        cursor: pointer;
+        scale: 1.5;
+    }
+}
+
+.card {
+    height: 100%;
+}
+
