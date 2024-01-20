@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTG - Planechase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=MedievalSharp&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="jquery-3.7.1.js"></script>
     <script src="script.js"></script>
@@ -12,25 +15,29 @@
     <div class="wrapper">
         <div class="menuLeft">
             <div class="life" id="player1">
-                <h1 class="stayRight">40 HP</h1>
-                <div class="buttonsRight">
-                    <button class="chLife" value="-1">-1</button>
-                    <button class="chLife" value="-10">-10</button>
-                    <button class="chLife" value="1">+1</button>
-                <button class="chLife" value="10">+10</button>
+                <h1>40 HP</h1>
+                <div class="smallButtons">
+                    <a class="chLife" id="+1"><img src="/cards/lifeup1.png" alt=""></a>
+                    <a class="chLife" id="+10"><img src="/cards/lifeup10.png" alt=""></a>
+                </div>
+                <div class="smallButtons">
+                    <a class="chLife" id="-1"><img src="/cards/lifedown1.png" alt=""></a>
+                    <a class="chLife" id="-10"><img src="/cards/lifedown10.png" alt=""></a>
                 </div>
             </div>
             <div id="navigation">
-                <button id="move" class="bigButton">move</button>
+                <a id="move"><img class="bigButton" src="/cards/planechase.jpg" alt="planechase"></a>
             </div>
             <div class="life" id="player3">
                 <h1>40 HP</h1>
-                <div class="buttons">
-                <button class="chLife" value="-1">-1</button>
-                <button class="chLife" value="-10">-10</button>
-                <button class="chLife" value="1">+1</button>
-                <button class="chLife" value="10">+10</button>
-            </div>
+                    <div class="smallButtons">
+                        <a class="chLife" id="+1"><img src="/cards/lifeup1.png" alt=""></a>
+                        <a class="chLife" id="+10"><img src="/cards/lifeup10.png" alt=""></a>
+                    </div>
+                    <div class="smallButtons">
+                        <a class="chLife" id="-1"><img src="/cards/lifedown1.png" alt=""></a>
+                        <a class="chLife" id="-10"><img src="/cards/lifedown10.png" alt=""></a>
+                    </div>
             </div>
         </div>
         <div id="fieldwrapper">
@@ -64,24 +71,28 @@
         <div class="menuRight">
             <div class="life" id="player2">
                 <h1>40 HP</h1>
-                <div class="buttons">
-                <button class="chLife" value="-1">-1</button>
-                <button class="chLife" value="-10">-10</button>
-                <button class="chLife" value="1">+1</button>
-                <button class="chLife" value="10">+10</button>
+                <div class="smallButtons">
+                    <a class="chLife" id="+1"><img src="/cards/lifeup1.png" alt=""></a>
+                    <a class="chLife" id="+10"><img src="/cards/lifeup10.png" alt=""></a>
+                </div>
+                <div class="smallButtons">
+                    <a class="chLife" id="-1"><img src="/cards/lifedown1.png" alt=""></a>
+                    <a class="chLife" id="-10"><img src="/cards/lifedown10.png" alt=""></a>
                 </div>
             </div>
             <div class="buttonsRight">
-                <button id="turnField" class="bigButton">Turn Field</button>
+                <a id="turnField"><img class="bigButton" src="/cards/turnField.jpg" alt="turnfield"></a>
             </div>
             <div class="life" id="player4">
-                <h1 class="stayRight">40 HP</h1>
-                <div class="buttonsRight">
-                <button class="chLife" value="-1">-1</button>
-                <button class="chLife" value="-10">-10</button>
-                <button class="chLife" value="1">+1</button>
-                <button class="chLife" value="10">+10</button>
-            </div>
+                <h1>40 HP</h1>
+                <div class="smallButtons">
+                    <a class="chLife" id="+1"><img src="/cards/lifeup1.png" alt=""></a>
+                    <a class="chLife" id="+10"><img src="/cards/lifeup10.png" alt=""></a>
+                </div>
+                <div class="smallButtons">
+                    <a class="chLife" id="-1"><img src="/cards/lifedown1.png" alt=""></a>
+                    <a class="chLife" id="-10"><img src="/cards/lifedown10.png" alt=""></a>
+                </div>
             </div>
         </div>
     </div>

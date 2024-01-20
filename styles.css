@@ -11,14 +11,37 @@
         height: auto;
         
         .card {
-            width: 230px;
+            width: 200px;
             height: auto;
         
         }
     }
 
+    .wrapper{
+        width: 100vw;
+    }
 
 
+    .smallButtons {
+        width: 23vw;
+    }
+
+    .chLife img {
+        height:100px !important;
+    }
+
+    .buttonsRight{
+        text-align: center;
+    }
+    
+    
+    .stayLeft {
+        text-align: center;
+    }
+    
+    .stayRight {
+        text-align: center;
+    }
 
 }
 
@@ -29,11 +52,37 @@
 
 body {
     width: 95vw;
+    height: 100vh;
+    background-color: #8bff94,0.1;
+    background-image: linear-gradient(45deg, #8bff94 0%, #ff6a88 27%, #99aeff 49%, #000000 75%, #ffffff 100%);
+
+    font-family: 'MedievalSharp', cursive;
+
+
 }
 
-.bigButton{
+
+h1 {
+    text-align: center;
+}
+
+
+.bigButton {
     height: 80px;
     width: 80px;
+    border: solid white 1px;
+}
+
+.bigButton:hover{
+    cursor: pointer;
+}
+
+.smallButtons {
+    text-align: center;
+}
+
+.chLife img{
+    height: 120px;
 }
 
 
@@ -87,13 +136,16 @@ body {
     transform: translate(-50%, -50%);
 }
 
+
+
 .menuLeft{
 
     height: 90vh;
     width: 15vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+
 
 }
 
@@ -102,7 +154,7 @@ body {
     width: 15vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .life{
@@ -110,20 +162,10 @@ body {
     flex-direction: column;
 }
 
-.buttonsLeft{
-    display: flex;
-    justify-content: left;
-}
-
 .buttonsRight{
-    display: flex;
-    justify-content: right;
+    text-align: right;
 }
 
-.buttonsleft{
-    display: flex;
-    justify-content: left;
-}
 
 .stayLeft {
     text-align: left;

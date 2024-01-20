@@ -44,8 +44,6 @@ $( document ).ready(function() {
     startGame();
 
 
-
-    console.log("Script ended.");
 });
 
 function startGame(){
@@ -255,25 +253,25 @@ function loadNewCards(){
 
 function changeLife(e){
 
-    switch ($(e.target).parent().parent().attr("id")) {
+    switch ($(e.target).parent().parent().parent().attr("id")) {
 
         case "player1":
-            player1Life = player1Life + (parseInt(e.target.value));
+            player1Life = player1Life + (parseInt($(e.target).parent().attr("id")));
             $("#player1").children("h1").text(player1Life + " HP");
             break;
     
         case "player2":
-            player2Life = player2Life + parseInt(e.target.value);
+            player2Life = player2Life + (parseInt($(e.target).parent().attr("id")));
             $("#player2").children("h1").text(player2Life + " HP");
             break;
         
         case "player3":
-            player3Life = player3Life + parseInt(e.target.value);
+            player3Life = player3Life + (parseInt($(e.target).parent().attr("id")));
                 $("#player3").children("h1").text(player3Life + " HP");    
             break;
         
         case "player4":
-            player4Life = player4Life + parseInt(e.target.value);
+            player4Life = player4Life + (parseInt($(e.target).parent().attr("id")));
                 $("#player4").children("h1").text(player4Life + " HP");
             break;
         default:
@@ -282,32 +280,6 @@ function changeLife(e){
 
 }
 
-function addLife(e){
-
-    switch ($(e.target).parent().attr("id")) {
-        case "player1":
-            player1Life++;
-            $("#player1").children("h1").text(player1Life + " HP");
-            break;
-    
-        case "player2":
-            player2Life++;
-            $("#player2").children("h1").text(player2Life + " HP");
-            break;
-        
-        case "player3":
-            player3Life++;
-            $("#player3").children("h1").text(player3Life + " HP");    
-            break;
-        
-        case "player4":
-            player4Life++;
-            $("#player4").children("h1").text(player4Life + " HP");
-            break;
-        default:
-            break;
-    }
-}
 
 
 function moveMenu(e){
@@ -316,6 +288,8 @@ function moveMenu(e){
 
     var cardFields = document.getElementsByClassName("cardfield");
 
+    $("button").css("opacity","0.5");
+    $("h1").css("opacity","0.5");
 
     for(var i = 0; i < cardFields.length; i++){
         
@@ -327,12 +301,15 @@ function moveMenu(e){
     
     }
 
-    // if clicked on possible move -> gamemove
+    // if clicked on possible move -> gamemove and turn opacity back to 1
 
     $(".move").on('click', function (e) {
 
         if(moveState){
             gameMove(e);
+
+            $("button").css("opacity","1");
+            $("h1").css("opacity","1");
 
             moveState = false;
             for(var i = 0; i < cardFields.length; i++){
@@ -382,7 +359,6 @@ function turnField(){
 
 function toggleMove(e){
 
-    console.log(moveState);
         var cardFields = document.getElementsByClassName("cardfield");
 
         if(!moveState){
