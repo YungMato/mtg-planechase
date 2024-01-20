@@ -24,24 +24,26 @@
 
     .smallButtons {
         width: 23vw;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
+
 
     .chLife img {
         height:100px !important;
     }
 
-    .buttonsRight{
-        text-align: center;
+    .menuLeft, .menuRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-    
-    
-    .stayLeft {
-        text-align: center;
-    }
-    
-    .stayRight {
-        text-align: center;
-    }
+
+ 
 
 }
 
