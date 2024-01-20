@@ -9,24 +9,80 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div id="fieldwrapper">
-        <div class="cardfield">
+    <div class="wrapper">
+        <div class="menuLeft">
+            <div class="life" id="player1">
+                <h1 class="stayRight">40 HP</h1>
+                <div class="buttonsRight">
+                    <button class="chLife" value="-1">-1</button>
+                    <button class="chLife" value="-10">-10</button>
+                    <button class="chLife" value="1">+1</button>
+                <button class="chLife" value="10">+10</button>
+                </div>
+            </div>
+            <div id="navigation">
+                <button id="move" class="bigButton">move</button>
+            </div>
+            <div class="life" id="player3">
+                <h1>40 HP</h1>
+                <div class="buttons">
+                <button class="chLife" value="-1">-1</button>
+                <button class="chLife" value="-10">-10</button>
+                <button class="chLife" value="1">+1</button>
+                <button class="chLife" value="10">+10</button>
+            </div>
+            </div>
         </div>
-        <div class="cardfield move" id="top">
+        <div id="fieldwrapper">
+            <div class="row1">
+                <div class="cardfield">
+                </div>
+                <div class="cardfield move" id="top">
+                </div>
+                <div class="cardfield">
+                </div>
+            </div>
+
+            <div class="row2">
+                <div class="cardfield move" id="left">
+                </div>
+                <div class="cardfield" id="active">
+                </div>
+                <div class="cardfield move" id="right">
+                </div>
+            </div>
+            
+            <div class="row3">
+                <div class="cardfield">
+                </div>
+                <div class="cardfield move" id="bottom">
+                </div>
+                <div class="cardfield">
+                </div>
+            </div>
         </div>
-        <div class="cardfield">
-        </div>
-        <div class="cardfield move" id="left">
-        </div>
-        <div class="cardfield" id="active">
-        </div>
-        <div class="cardfield move" id="right">
-        </div>
-        <div class="cardfield">
-        </div>
-        <div class="cardfield move" id="bottom">
-        </div>
-        <div class="cardfield">
+        <div class="menuRight">
+            <div class="life" id="player2">
+                <h1>40 HP</h1>
+                <div class="buttons">
+                <button class="chLife" value="-1">-1</button>
+                <button class="chLife" value="-10">-10</button>
+                <button class="chLife" value="1">+1</button>
+                <button class="chLife" value="10">+10</button>
+                </div>
+            </div>
+            <div class="buttonsRight">
+                <button id="turnField" class="bigButton">Turn Field</button>
+            </div>
+            <div class="life" id="player4">
+                <h1 class="stayRight">40 HP</h1>
+                <div class="buttonsRight">
+                <button class="chLife" value="-1">-1</button>
+                <button class="chLife" value="-10">-10</button>
+                <button class="chLife" value="1">+1</button>
+                <button class="chLife" value="10">+10</button>
+            </div>
+            </div>
         </div>
     </div>
 </body>

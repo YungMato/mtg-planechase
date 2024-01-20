@@ -36,15 +36,26 @@ var cardMap = [
     ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
 ];
 
-var xAkt, yAct;
+var xAkt, yAct, player1Life, player2Life, player3Life, player4Life;
+
+var moveState = false;
 
 $( document ).ready(function() {
     startGame();
+
+
 
     console.log("Script ended.");
 });
 
 function startGame(){
+    // setup Players lifes
+
+    player1Life = 40;
+    player2Life = 40;
+    player3Life = 40;
+    player4Life = 40;
+
     // mix cards and save it to the active Playcards
 
     cards = cards.sort((a, b) => 0.5 - Math.random());
@@ -82,34 +93,30 @@ function startGame(){
     // Save Card to current Gamemap and delete it from activeCards        
     cardMap[10][10] = activeCards.shift(); 
     xAkt = 10;
-    yAkt = 10;
-
-
-
-    // Add functions to shift the Map (You can only go top,right,bottom,left)
-
-    // gameMove(this);
-    
+    yAkt = 10;  
 
     // OnClick Show card in Big
 
     $(".cardfield").on('click', function (e) {
-        openHighlightCard(e);        
+        if(!moveState){
+            toggleHighlightCard(e);        
+        }
        });   
+
+    
+
+    setUpButtons();
 }
 
-function openHighlightCard(card){
+function toggleHighlightCard(card){
+
 
     if($(card.target).attr("src") != "/cards/default.jpg"){
         
-        var showSrc = $(card.target).attr("src");
-        
-        $("body").append("<div>").attr("id","highlightCard").append($("<img src='" + showSrc + "'>")
-            .on("click", function (e) {
-                closeHighlightCard(e);
-            }
-            
-        ));     
+        if($("#highlightCard").length == 0){
+            openHighlightCard(card);
+        }
+         
     }
 
 }
@@ -117,13 +124,26 @@ function openHighlightCard(card){
 
 function closeHighlightCard(card){
 
-    console.log($(card.target).parent());
-    $(card.target).remove();
+    $("#highlightCard").remove();
+}
+
+function openHighlightCard(card){
+
+    var showSrc = $(card.target).attr("src");
+        
+    $("body").prepend("<img src='" + showSrc + "' id='highlightCard' class='transformH' onclick='this.remove()'>");
+               
+    
+    if($("#fieldwrapper").css("rotate") == "180deg"){
+        $("#highlightCard").removeClass("transoformH")
+        $("#highlightCard").attr("class","flipH");
+    }
 }
 
 function gameMove(card){
 
-    switch ($(card).attr("id")) {
+
+    switch ($(card.target).parent().attr("id")) {
 
         case "top":
             
@@ -231,6 +251,146 @@ function loadNewCards(){
     }
 }, 2000);
 
+}
+
+function changeLife(e){
+
+    switch ($(e.target).parent().parent().attr("id")) {
+
+        case "player1":
+            player1Life = player1Life + (parseInt(e.target.value));
+            $("#player1").children("h1").text(player1Life + " HP");
+            break;
+    
+        case "player2":
+            player2Life = player2Life + parseInt(e.target.value);
+            $("#player2").children("h1").text(player2Life + " HP");
+            break;
+        
+        case "player3":
+            player3Life = player3Life + parseInt(e.target.value);
+                $("#player3").children("h1").text(player3Life + " HP");    
+            break;
+        
+        case "player4":
+            player4Life = player4Life + parseInt(e.target.value);
+                $("#player4").children("h1").text(player4Life + " HP");
+            break;
+        default:
+            break;
+    }
+
+}
+
+function addLife(e){
+
+    switch ($(e.target).parent().attr("id")) {
+        case "player1":
+            player1Life++;
+            $("#player1").children("h1").text(player1Life + " HP");
+            break;
+    
+        case "player2":
+            player2Life++;
+            $("#player2").children("h1").text(player2Life + " HP");
+            break;
+        
+        case "player3":
+            player3Life++;
+            $("#player3").children("h1").text(player3Life + " HP");    
+            break;
+        
+        case "player4":
+            player4Life++;
+            $("#player4").children("h1").text(player4Life + " HP");
+            break;
+        default:
+            break;
+    }
+}
+
+
+function moveMenu(e){
+
+    // border yellow for every possible move and opacity 0.5 for every other
+
+    var cardFields = document.getElementsByClassName("cardfield");
+
+
+    for(var i = 0; i < cardFields.length; i++){
+        
+        if($(cardFields[i]).attr("class") == "cardfield"){
+            $(cardFields[i]).css("opacity","0.5");
+        } else {
+            $(cardFields[i]).children("img").css("border","solid yellow 1px");
+        }
+    
+    }
+
+    // if clicked on possible move -> gamemove
+
+    $(".move").on('click', function (e) {
+
+        if(moveState){
+            gameMove(e);
+
+            moveState = false;
+            for(var i = 0; i < cardFields.length; i++){
+                
+                if($(cardFields[i]).attr("class") == "cardfield"){
+                    $(cardFields[i]).css("opacity","1");
+                } else {
+                    $(cardFields[i]).children("img").css("border","none");
+                }
+                    
+            } 
+        } 
+
+    });
+    
+
+}
+
+function setUpButtons(){
+
+    $(".chLife").on('click', function (e) {
+        changeLife(e); 
+    });
+
+    $("#move").on('click', function (e) {
+        toggleMove(e);
+    });  
+
+    $("#turnField").on('click', function (e) {
+        turnField();
+    });  
+
+}
+
+function turnField(){
+
+    
+    if($("#fieldwrapper").css("rotate") == "180deg"){
+        $("#fieldwrapper").removeClass("flip");
+        $("#highlightCard").removeClass("flipH");
+        $("#highlightCard").attr("class","transformH")
+    } else {
+        $("#fieldwrapper").attr("class","flip");
+        $("#highlightCard").attr("class","flipH");
+    }
+}
+
+function toggleMove(e){
+
+    console.log(moveState);
+        var cardFields = document.getElementsByClassName("cardfield");
+
+        if(!moveState){
+            moveState = true;
+            moveMenu(e); 
+            
+            
+        } 
 }
 
 

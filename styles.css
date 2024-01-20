@@ -1,16 +1,57 @@
-#fieldwrapper {
-    position: absolute;
-    z-index: 1;
+@media only screen and (max-device-width: 961px){
 
+
+    #fieldwrapper{
+        width: 60vw;
+        display: flex;
+    }
+
+    .cardfield {
+        width: 100%;
+        height: auto;
+        
+        .card {
+            width: 230px;
+            height: auto;
+        
+        }
+    }
+
+
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 95vw;
+}
+
+.bigButton{
+    height: 80px;
+    width: 80px;
+}
+
+
+.wrapper {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
     height: 90vh;
-    width: 100vh;
+    padding-top: 10px;
+}
 
-    left: 20%;
+#fieldwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    display: grid; 
-    gap:10px;
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr; 
 }
 
 .cardfield {
@@ -18,7 +59,9 @@
     justify-content: center;
     align-items: center;
 
-    height: 30vh;
+    margin: 3px;
+
+    height: 25vh;
 
     :hover {
         cursor: pointer;
@@ -30,18 +73,77 @@
 }
 
 #highlightCard{
-    background-color: yellow;
+    
+    position: absolute;
+    z-index: 5;
 
-    height: 90vh;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-        position: relative;
-        z-index: 5;
-    }
 }
 
+.transformH{
+    transform: translate(-50%, -50%);
+}
+
+.menuLeft{
+
+    height: 90vh;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.menuRight{
+    height: 90vh;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.life{
+    display:flex;
+    flex-direction: column;
+}
+
+.buttonsLeft{
+    display: flex;
+    justify-content: left;
+}
+
+.buttonsRight{
+    display: flex;
+    justify-content: right;
+}
+
+.buttonsleft{
+    display: flex;
+    justify-content: left;
+}
+
+.stayLeft {
+    text-align: left;
+}
+
+.stayRight {
+    text-align: right;
+}
+
+#player1, #player2 {
+    rotate: 180deg;
+}
+
+.flip{
+    rotate: 180deg;
+}
+
+/** Flip for highlightCard */
+
+.flipH {
+    rotate: 180deg;
+    transform: translate(50%, 50%);
+}
