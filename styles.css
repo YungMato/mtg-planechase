@@ -1,15 +1,29 @@
 @media only screen and (max-device-width: 961px){
 
-
-    #fieldwrapper{
-        width: 60vw;
+    h1 {
+        font-size: 24px;
     }
 
+    #fieldwrapper{
+        width: 45vw !important;
+    }
+
+
         
- .card {
-     height: 26vh !important;
+    .card {
+     height: 20vh !important;
         
-      }
+    }
+
+    #highlightCard{
+    
+        top: -13vh !important;
+        left: 28vh !important;
+    
+        height: 120vh !important;
+        
+    
+    }
     
 
     .wrapper{
@@ -26,9 +40,15 @@
         align-items: center;
     }
 
+    .bigButton{
+        width: 80px !important;
+        height: 80px !important;
+    }
+
 
     .chLife img {
-        height:100px !important;
+        height:12vh !important;
+
     }
 
     .menuLeft, .menuRight{
@@ -36,8 +56,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
     }
 
+    .wrapper{
+        height: 100vh;
+        width: 100vw;
+    }
  
 
 }
@@ -50,8 +75,14 @@
 body {
     width: 95vw;
     height: 100vh;
+
     background-color: #8bff94,0.1;
     background-image: linear-gradient(45deg, #8bff94 0%, #ff6a88 27%, #99aeff 49%, #000000 75%, #ffffff 100%);
+
+    overflow: hidden;
+
+
+
 
     font-family: 'MedievalSharp', cursive;
 
@@ -65,9 +96,8 @@ h1 {
 
 
 .bigButton {
-    height: 80px;
-    width: 80px;
-    border: solid white 1px;
+    height: 120px;
+    width: 120px;
 }
 
 .bigButton:hover{
@@ -79,7 +109,8 @@ h1 {
 }
 
 .chLife img{
-    height: 120px;
+    height: 100px;
+    cursor: pointer;
 }
 
 
@@ -188,4 +219,11 @@ h1 {
 
 .flipH {
     transform: rotate(180deg);
+}
+
+.life h1{
+    border: solid 6px rgb(88, 88, 88);
+    border-radius: 30%;
+    background-color: #000000;
+    color: white;
 }

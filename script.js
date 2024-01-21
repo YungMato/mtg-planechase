@@ -286,6 +286,7 @@ function moveMenu(e){
 
     $("button").css("opacity","0.5");
     $("h1").css("opacity","0.5");
+    $(".chLife").css("opacity","0.5");
 
     for(var i = 0; i < cardFields.length; i++){
         
@@ -306,6 +307,7 @@ function moveMenu(e){
 
             $("button").css("opacity","1");
             $("h1").css("opacity","1");
+            $(".chLife").css("opacity","1");
 
             moveState = false;
             for(var i = 0; i < cardFields.length; i++){
