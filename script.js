@@ -1,39 +1,32 @@
- var cards = ["/cards/planech_1.jpg",
-            "/cards/planech_2.jpg",
-            "/cards/planech_3.jpg",
-            "/cards/planech_4.jpg",
-            "/cards/planech_5.jpg",
-            "/cards/planech_6.jpg",
-            "/cards/planech_7.jpg",
-            "/cards/planech_8.jpg",
-            "/cards/planech_9.jpg",
-            "/cards/planech_10.jpg",
-            "/cards/planech_11.jpg",
-            "/cards/planech_12.jpg"];
+ var cards = [];
 
-var activeCards;
+ for(var i = 1; i < 151; i++){
+    cards.push("/plane/plane (" + i + ").png");
+ }
+
+var activeCards = cards;
 
 var cardMap = [
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
-    ["/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg","/cards/default.jpg"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
+    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
 ];
 
 var xAkt, yAct, player1Life, player2Life, player3Life, player4Life;
@@ -57,16 +50,24 @@ function startGame(){
     // mix cards and save it to the active Playcards
 
     cards = cards.sort((a, b) => 0.5 - Math.random());
-    activeCards = cards;
 
     // find all cardplaces and fill in all the places with default cards
     
     for(var i = 0; i < 9;i++){
 
-        var defaultCard = "<img src='/cards/default.jpg' class='card'>"
+        var defaultCard = "<img src='/plane/default.png' class='card'>"
 
         $(".cardfield:eq(" + i + ")").append(defaultCard);
     }
+
+    // flip the middle card
+
+    $(".cardfield:eq(4)").children(".card").attr("src", activeCards[0]);
+
+    // Save Card to current Gamemap and delete it from activeCards        
+    cardMap[10][10] = activeCards.shift(); 
+    xAkt = 10;
+    yAkt = 10; 
 
     // Wait a small time and then flip the 4 outer cards and delete them from activeCards
     
@@ -84,14 +85,9 @@ function startGame(){
         cardMap[11][10] = activeCards.shift();        
     }, 2000);
 
-    // flip the middle card
 
-    $(".cardfield:eq(4)").children(".card").attr("src", activeCards[0]);
     
-    // Save Card to current Gamemap and delete it from activeCards        
-    cardMap[10][10] = activeCards.shift(); 
-    xAkt = 10;
-    yAkt = 10;  
+ 
 
     // OnClick Show card in Big
 
@@ -109,7 +105,7 @@ function startGame(){
 function toggleHighlightCard(card){
 
 
-    if($(card.target).attr("src") != "/cards/default.jpg"){
+    if($(card.target).attr("src") != "/plane/default.png"){
         
         if($("#highlightCard").length == 0){
             openHighlightCard(card);
@@ -226,24 +222,24 @@ function loadNewCards(){
     setTimeout(function() {
               
     // check if top,right,left,bottom img is default, if true: load new card and delete from active
-    if($(".card:eq(1)").attr("src") == "/cards/default.jpg"){
+    if($(".card:eq(1)").attr("src") == "/plane/default.png"){
 
             $(".card:eq(1)").attr("src", activeCards[0]);
             cardMap[xAkt-1][yAkt] = activeCards.shift(); 
 
     }
 
-    if($(".card:eq(3)").attr("src") == "/cards/default.jpg"){
+    if($(".card:eq(3)").attr("src") == "/plane/default.png"){
         $(".card:eq(3)").attr("src", activeCards[0]);
         cardMap[xAkt][yAkt-1] = activeCards.shift(); 
     }
 
-    if($(".card:eq(5)").attr("src") == "/cards/default.jpg"){
+    if($(".card:eq(5)").attr("src") == "/plane/default.png"){
         $(".card:eq(5)").attr("src", activeCards[0]);
         cardMap[xAkt][yAkt+1] = activeCards.shift(); 
     }
 
-    if($(".card:eq(7)").attr("src") == "/cards/default.jpg"){
+    if($(".card:eq(7)").attr("src") == "/plane/default.png"){
         $(".card:eq(7)").attr("src", activeCards[0]);
         cardMap[xAkt+1][yAkt] = activeCards.shift(); 
     }

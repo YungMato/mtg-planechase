@@ -3,19 +3,14 @@
 
     #fieldwrapper{
         width: 60vw;
-        display: flex;
     }
 
-    .cardfield {
-        width: 100%;
-        height: auto;
         
-        .card {
-            width: 200px;
-            height: auto;
+ .card {
+     height: 26vh !important;
         
-        }
-    }
+      }
+    
 
     .wrapper{
         width: 100vw;
@@ -119,23 +114,27 @@ h1 {
     }
 }
 
+.row1, .row2, .row3 {
+    width: 20vw;
+}
+
 .card {
-    height: 100%;
+    rotate: 90deg;
+    height: 35vh;
 }
 
 #highlightCard{
     
     position: absolute;
+
+    top: -15%;
+    left: 28%;
     z-index: 5;
 
-    top: 50%;
-    left: 50%;
+    rotate: 90deg;
+    height: 130vh;
     
 
-}
-
-.transformH{
-    transform: translate(-50%, -50%);
 }
 
 
@@ -188,6 +187,5 @@ h1 {
 /** Flip for highlightCard */
 
 .flipH {
-    rotate: 180deg;
-    transform: translate(50%, 50%);
+    transform: rotate(180deg);
 }
