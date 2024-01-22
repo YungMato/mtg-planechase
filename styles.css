@@ -81,6 +81,11 @@ h1 {
     text-align: center;
 }
 
+#navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .bigButton {
     height: 120px;

@@ -97,6 +97,9 @@ function startGame(){
         $(".cardfield:eq(7)").children(".card").attr("src", activeCards[0]);
         cardMap[11][10] = activeCards.shift();        
     }, 2000);
+
+    console.log("INIT >>>");
+    console.log(cardMap);
 }
 
 function setUpButtons(){
@@ -158,21 +161,17 @@ function changeLife(e){
 
 function toggleMove(e){
     
-    // check if movestate=true (if move button was pressed) and start the move menu
-
-    var cardFields = document.getElementsByClassName("cardfield");
+    // check if movestate=false (move button was pressed) and start the move menu
 
     if(!moveState){
         moveState = true;
-        moveMenu(e); 
-        
-        
+        moveMenu(e);   
     } 
 }
 
 function moveMenu(e){
 
-    // border yellow for every possible move and opacity 0.5 for every other
+    //give all Buttons and Fonts opacity 0.5
 
     var cardFields = document.getElementsByClassName("cardfield");
 
@@ -180,12 +179,16 @@ function moveMenu(e){
     $("h1").css("opacity","0.5");
     $(".chLife").css("opacity","0.5");
 
+    // border yellow for every possible normal move, red for hellride and opacity 0.5 for the middle card
+
     for(var i = 0; i < cardFields.length; i++){
         
-        if($(cardFields[i]).attr("class") == "cardfield"){
-            $(cardFields[i]).css("opacity","0.5");
+        if($(cardFields[i]).attr("id") == "left" || $(cardFields[i]).attr("id") == "top" || $(cardFields[i]).attr("id") == "right" || $(cardFields[i]).attr("id") == "bottom"){
+            $(cardFields[i]).children("img").css("border","solid yellow 3px");
+        } else if($(cardFields[i]).attr("id") == "topleft" && $(cardFields[i]).children("img").attr("src") == "/plane/default.png"|| $(cardFields[i]).attr("id") == "topright" && $(cardFields[i]).children("img").attr("src") == "/plane/default.png" || $(cardFields[i]).attr("id") == "bottomright" && $(cardFields[i]).children("img").attr("src") == "/plane/default.png" || $(cardFields[i]).attr("id") == "bottomleft" && $(cardFields[i]).children("img").attr("src") == "/plane/default.png") {
+            $(cardFields[i]).children("img").css("border","solid red 3px");
         } else {
-            $(cardFields[i]).children("img").css("border","solid yellow 1px");
+            $(cardFields[i]).css("opacity","0.5");
         }
     
     }
@@ -202,14 +205,9 @@ function moveMenu(e){
             $(".chLife").css("opacity","1");
 
             moveState = false;
-            for(var i = 0; i < cardFields.length; i++){
-                
-                if($(cardFields[i]).attr("class") == "cardfield"){
-                    $(cardFields[i]).css("opacity","1");
-                } else {
-                    $(cardFields[i]).children("img").css("border","none");
-                }        
-            } 
+
+            $(".cardfield").css("opacity","1");
+            $(".cardfield").children("img").css("border","none");
         } 
     });
 }
@@ -220,7 +218,7 @@ function gameMove(card){
 
     switch ($(card.target).parent().attr("id")) {
 
-        case "top":
+        case "left":
             
             $(".card:eq(0)").attr("src", cardMap[xAkt-2][yAkt-1]);
             $(".card:eq(1)").attr("src", cardMap[xAkt-2][yAkt]);
@@ -234,46 +232,46 @@ function gameMove(card){
             $(".card:eq(7)").attr("src", cardMap[xAkt][yAkt]);
             $(".card:eq(8)").attr("src", cardMap[xAkt][yAkt+1]);       
 
-            xAkt = xAkt -1;
+            xAkt--;
             break;
             
-        case "left":
+        case "top":
 
-        $(".card:eq(0)").attr("src", cardMap[xAkt-1][yAkt-2]);
-        $(".card:eq(1)").attr("src", cardMap[xAkt-1][yAkt-1]);
-        $(".card:eq(2)").attr("src", cardMap[xAkt-1][yAkt]);
-        
-        $(".card:eq(3)").attr("src", cardMap[xAkt][yAkt-2]);
-        $(".card:eq(4)").attr("src", cardMap[xAkt][yAkt-1]); // gameCords (middle card)
-        $(".card:eq(5)").attr("src", cardMap[xAkt][yAkt]);
+            $(".card:eq(0)").attr("src", cardMap[xAkt-1][yAkt-2]);
+            $(".card:eq(1)").attr("src", cardMap[xAkt-1][yAkt-1]);
+            $(".card:eq(2)").attr("src", cardMap[xAkt-1][yAkt]);
+            
+            $(".card:eq(3)").attr("src", cardMap[xAkt][yAkt-2]);
+            $(".card:eq(4)").attr("src", cardMap[xAkt][yAkt-1]); // gameCords (middle card)
+            $(".card:eq(5)").attr("src", cardMap[xAkt][yAkt]);
 
-        $(".card:eq(6)").attr("src", cardMap[xAkt+1][yAkt-2]);
-        $(".card:eq(7)").attr("src", cardMap[xAkt+1][yAkt-1]);
-        $(".card:eq(8)").attr("src", cardMap[xAkt+1][yAkt]);       
+            $(".card:eq(6)").attr("src", cardMap[xAkt+1][yAkt-2]);
+            $(".card:eq(7)").attr("src", cardMap[xAkt+1][yAkt-1]);
+            $(".card:eq(8)").attr("src", cardMap[xAkt+1][yAkt]);       
 
-        yAkt = yAkt -1;
+            yAkt--;
             
             break;
 
-        case "right":
-            
-        $(".card:eq(0)").attr("src", cardMap[xAkt-1][yAkt]);
-        $(".card:eq(1)").attr("src", cardMap[xAkt-1][yAkt+1]);
-        $(".card:eq(2)").attr("src", cardMap[xAkt-1][yAkt+2]);
-        
-        $(".card:eq(3)").attr("src", cardMap[xAkt][yAkt]);
-        $(".card:eq(4)").attr("src", cardMap[xAkt][yAkt+1]); // gameCords (middle card)
-        $(".card:eq(5)").attr("src", cardMap[xAkt][yAkt+2]);
-
-        $(".card:eq(6)").attr("src", cardMap[xAkt+1][yAkt]);
-        $(".card:eq(7)").attr("src", cardMap[xAkt+1][yAkt+1]);
-        $(".card:eq(8)").attr("src", cardMap[xAkt+1][yAkt+2]);       
-
-        yAkt = yAkt +1;
-
-            break;
-        
         case "bottom":
+            
+            $(".card:eq(0)").attr("src", cardMap[xAkt-1][yAkt]);
+            $(".card:eq(1)").attr("src", cardMap[xAkt-1][yAkt+1]);
+            $(".card:eq(2)").attr("src", cardMap[xAkt-1][yAkt+2]);
+            
+            $(".card:eq(3)").attr("src", cardMap[xAkt][yAkt]);
+            $(".card:eq(4)").attr("src", cardMap[xAkt][yAkt+1]); // gameCords (middle card)
+            $(".card:eq(5)").attr("src", cardMap[xAkt][yAkt+2]);
+
+            $(".card:eq(6)").attr("src", cardMap[xAkt+1][yAkt]);
+            $(".card:eq(7)").attr("src", cardMap[xAkt+1][yAkt+1]);
+            $(".card:eq(8)").attr("src", cardMap[xAkt+1][yAkt+2]);       
+
+            yAkt++;
+
+            break;
+        
+        case "right":
             
             $(".card:eq(0)").attr("src", cardMap[xAkt][yAkt-1]);
             $(".card:eq(1)").attr("src", cardMap[xAkt][yAkt]);
@@ -287,7 +285,90 @@ function gameMove(card){
             $(".card:eq(7)").attr("src", cardMap[xAkt+2][yAkt]);
             $(".card:eq(8)").attr("src", cardMap[xAkt+2][yAkt+1]);       
 
-            xAkt = xAkt +1;
+            xAkt++;
+            break;
+        
+        case "topleft":
+
+
+        if($(card.target).attr("src") == "/plane/default.png"){
+            $(".card:eq(0)").attr("src", cardMap[xAkt-2][yAkt-2]);
+            $(".card:eq(1)").attr("src", cardMap[xAkt-2][yAkt-1]);
+            $(".card:eq(2)").attr("src", cardMap[xAkt-2][yAkt]);
+            
+            $(".card:eq(3)").attr("src", cardMap[xAkt-1][yAkt-2]);
+            $(".card:eq(4)").attr("src", cardMap[xAkt-1][yAkt-1]); // gameCords (middle card)
+            $(".card:eq(5)").attr("src", cardMap[xAkt-1][yAkt]);
+
+            $(".card:eq(6)").attr("src", cardMap[xAkt][yAkt-2]);
+            $(".card:eq(7)").attr("src", cardMap[xAkt][yAkt-1]);
+            $(".card:eq(8)").attr("src", cardMap[xAkt][yAkt]);   
+            
+            xAkt--;
+            yAkt--;
+
+
+        }
+
+            break;
+
+        case "topright":
+            if($(card.target).attr("src") == "/plane/default.png"){
+                $(".card:eq(0)").attr("src", cardMap[xAkt][yAkt-2]);
+                $(".card:eq(1)").attr("src", cardMap[xAkt][yAkt-1]);
+                $(".card:eq(2)").attr("src", cardMap[xAkt][yAkt]);
+                
+                $(".card:eq(3)").attr("src", cardMap[xAkt+1][yAkt-2]);
+                $(".card:eq(4)").attr("src", cardMap[xAkt+1][yAkt-1]); // gameCords (middle card)
+                $(".card:eq(5)").attr("src", cardMap[xAkt+1][yAkt]);
+
+                $(".card:eq(6)").attr("src", cardMap[xAkt+2][yAkt-2]);
+                $(".card:eq(7)").attr("src", cardMap[xAkt+2][yAkt-1]);
+                $(".card:eq(8)").attr("src", cardMap[xAkt+2][yAkt]);   
+                
+                xAkt++;
+                yAkt--;
+
+            }
+            break;
+
+        case "bottomleft":
+            if($(card.target).attr("src") == "/plane/default.png"){
+                $(".card:eq(0)").attr("src", cardMap[xAkt-2][yAkt]);
+                $(".card:eq(1)").attr("src", cardMap[xAkt-2][yAkt-1]);
+                $(".card:eq(2)").attr("src", cardMap[xAkt-2][yAkt-2]);
+                
+                $(".card:eq(3)").attr("src", cardMap[xAkt-1][yAkt]);
+                $(".card:eq(4)").attr("src", cardMap[xAkt-1][yAkt+1]); // gameCords (middle card)
+                $(".card:eq(5)").attr("src", cardMap[xAkt-1][yAkt+2]);
+
+                $(".card:eq(6)").attr("src", cardMap[xAkt][yAkt]);
+                $(".card:eq(7)").attr("src", cardMap[xAkt][yAkt+1]);
+                $(".card:eq(8)").attr("src", cardMap[xAkt][yAkt+2]);    
+
+                xAkt--;
+                yAkt++;
+
+            }
+            break;
+
+        case "bottomright":
+            if($(card.target).attr("src") == "/plane/default.png"){
+                $(".card:eq(0)").attr("src", cardMap[xAkt][yAkt]);
+                $(".card:eq(1)").attr("src", cardMap[xAkt][yAkt+1]);
+                $(".card:eq(2)").attr("src", cardMap[xAkt][yAkt+2]);
+                
+                $(".card:eq(3)").attr("src", cardMap[xAkt+1][yAkt]);
+                $(".card:eq(4)").attr("src", cardMap[xAkt+1][yAkt+1]); // gameCords (middle card)
+                $(".card:eq(5)").attr("src", cardMap[xAkt+1][yAkt+2]);
+
+                $(".card:eq(6)").attr("src", cardMap[xAkt+2][yAkt]);
+                $(".card:eq(7)").attr("src", cardMap[xAkt+2][yAkt+1]);
+                $(".card:eq(8)").attr("src", cardMap[xAkt+2][yAkt+2]);    
+
+                xAkt++;
+                yAkt++;
+            }
             break;
     
         default:
@@ -298,10 +379,9 @@ function gameMove(card){
 }
 
 function loadNewCards(){
+       
+    // check if top,right,left,bottom img is default, if true: load new card, delete from activeCards and save it to the Map
 
-    setTimeout(function() {
-              
-    // check if top,right,left,bottom img is default, if true: load new card and delete from activeCards
 
     if($(".card:eq(1)").attr("src") == "/plane/default.png"){
 
@@ -320,11 +400,18 @@ function loadNewCards(){
         cardMap[xAkt][yAkt+1] = activeCards.shift(); 
     }
 
+
     if($(".card:eq(7)").attr("src") == "/plane/default.png"){
         $(".card:eq(7)").attr("src", activeCards[0]);
         cardMap[xAkt+1][yAkt] = activeCards.shift(); 
     }
-}, 2000);
+
+    // check if middle card img is default
+
+    if($(".card:eq(4)").attr("src") == "/plane/default.png"){
+        $(".card:eq(4)").attr("src", activeCards[0]);
+        cardMap[xAkt][yAkt] = activeCards.shift(); 
+    }
 }
 
 function turnField(){
