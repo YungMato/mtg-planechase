@@ -27,7 +27,7 @@ var moveState = false;
 $( document ).ready(function() {
 
     setUpMap();
-    startGame();
+    initGame();
     setUpButtons();
 
 
@@ -61,7 +61,7 @@ function setUpMap(){
 }
 
 
-function startGame(){
+function initGame(){
 
     // find all cardplaces and fill in all the places with default cards
     
