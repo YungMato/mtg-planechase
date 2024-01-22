@@ -1,55 +1,67 @@
- var cards = [];
+// Options
 
- for(var i = 1; i < 151; i++){
-    cards.push("/plane/plane (" + i + ").png");
- }
+    // Player Life
+    var player1Life = 40;
+    var player2Life = 40;
+    var player3Life = 40;
+    var player4Life = 40;
 
-var activeCards = cards;
+    //MapSize
+    var mapSize = 20;
 
-var cardMap = [
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-    ["/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png","/plane/default.png"],
-];
+// Variables
 
-var xAkt, yAct, player1Life, player2Life, player3Life, player4Life;
-
+var xAkt, yAct;
 var moveState = false;
 
+// Fields
+
+    // Card Decks
+        var cards = [];
+        var activeCards = [];
+
+    // Map
+        var cardMap = [];
+        var tempMap = [];
+
 $( document ).ready(function() {
+
+    setUpMap();
     startGame();
+    setUpButtons();
 
 
 });
 
-function startGame(){
-    // setup Players lifes
+function setUpMap(){
 
-    player1Life = 40;
-    player2Life = 40;
-    player3Life = 40;
-    player4Life = 40;
+    // set up the Card Decks
+
+    for(var i = 1; i < 151; i++){
+       cards.push("/plane/plane (" + i + ").png");
+    }
+   
+   activeCards = cards;
 
     // mix cards and save it to the active Playcards
 
     cards = cards.sort((a, b) => 0.5 - Math.random());
+
+   // create a mapSize*mapSize 2D Array as Map
+   
+   for(var i = 0; i < mapSize; i++){
+   
+        for(var k = 0; k < mapSize;k++){
+        tempMap.push("/plane/default.png");
+    }
+    
+    cardMap.push(tempMap);
+    tempMap = [];  
+   }
+}
+
+
+function startGame(){
 
     // find all cardplaces and fill in all the places with default cards
     
@@ -64,7 +76,8 @@ function startGame(){
 
     $(".cardfield:eq(4)").children(".card").attr("src", activeCards[0]);
 
-    // Save Card to current Gamemap and delete it from activeCards        
+    // Save Card to current Gamemap and delete it from activeCards     
+
     cardMap[10][10] = activeCards.shift(); 
     xAkt = 10;
     yAkt = 10; 
@@ -84,167 +97,35 @@ function startGame(){
         $(".cardfield:eq(7)").children(".card").attr("src", activeCards[0]);
         cardMap[11][10] = activeCards.shift();        
     }, 2000);
+}
 
+function setUpButtons(){
 
-    
- 
+    // onClick change life
 
-    // OnClick Show card in Big
+    $(".chLife").on('click', function (e) {
+        changeLife(e); 
+    });
+
+    // onClick move to clicked field
+
+    $("#move").on('click', function (e) {
+        toggleMove(e);
+    });  
+
+    // onClick turn field 180°
+
+    $("#turnField").on('click', function (e) {
+        turnField();
+    });  
+
+    // onClick Show card in Big
 
     $(".cardfield").on('click', function (e) {
         if(!moveState){
             toggleHighlightCard(e);        
         }
-       });   
-
-    
-
-    setUpButtons();
-}
-
-function toggleHighlightCard(card){
-
-
-    if($(card.target).attr("src") != "/plane/default.png"){
-        
-        if($("#highlightCard").length == 0){
-            openHighlightCard(card);
-        }
-         
-    }
-
-}
-
-
-function closeHighlightCard(card){
-
-    $("#highlightCard").remove();
-}
-
-function openHighlightCard(card){
-
-    var showSrc = $(card.target).attr("src");
-        
-    $("body").prepend("<img src='" + showSrc + "' id='highlightCard' class='transformH' onclick='this.remove()'>");
-               
-    
-    if($("#fieldwrapper").css("rotate") == "180deg"){
-        $("#highlightCard").removeClass("transoformH")
-        $("#highlightCard").attr("class","flipH");
-    }
-}
-
-function gameMove(card){
-
-
-    switch ($(card.target).parent().attr("id")) {
-
-        case "top":
-            
-            $(".card:eq(0)").attr("src", cardMap[xAkt-2][yAkt-1]);
-            $(".card:eq(1)").attr("src", cardMap[xAkt-2][yAkt]);
-            $(".card:eq(2)").attr("src", cardMap[xAkt-2][yAkt+1]);
-            
-            $(".card:eq(3)").attr("src", cardMap[xAkt-1][yAkt-1]);
-            $(".card:eq(4)").attr("src", cardMap[xAkt-1][yAkt]); // gameCords
-            $(".card:eq(5)").attr("src", cardMap[xAkt-1][yAkt+1]);
-
-            $(".card:eq(6)").attr("src", cardMap[xAkt][yAkt-1]);
-            $(".card:eq(7)").attr("src", cardMap[xAkt][yAkt]);
-            $(".card:eq(8)").attr("src", cardMap[xAkt][yAkt+1]);       
-
-            xAkt = xAkt -1;
-            break;
-            
-        case "left":
-
-        $(".card:eq(0)").attr("src", cardMap[xAkt-1][yAkt-2]);
-        $(".card:eq(1)").attr("src", cardMap[xAkt-1][yAkt-1]);
-        $(".card:eq(2)").attr("src", cardMap[xAkt-1][yAkt]);
-        
-        $(".card:eq(3)").attr("src", cardMap[xAkt][yAkt-2]);
-        $(".card:eq(4)").attr("src", cardMap[xAkt][yAkt-1]); // gameCords
-        $(".card:eq(5)").attr("src", cardMap[xAkt][yAkt]);
-
-        $(".card:eq(6)").attr("src", cardMap[xAkt+1][yAkt-2]);
-        $(".card:eq(7)").attr("src", cardMap[xAkt+1][yAkt-1]);
-        $(".card:eq(8)").attr("src", cardMap[xAkt+1][yAkt]);       
-
-        yAkt = yAkt -1;
-            
-            break;
-
-        case "right":
-            
-        $(".card:eq(0)").attr("src", cardMap[xAkt-1][yAkt]);
-        $(".card:eq(1)").attr("src", cardMap[xAkt-1][yAkt+1]);
-        $(".card:eq(2)").attr("src", cardMap[xAkt-1][yAkt+2]);
-        
-        $(".card:eq(3)").attr("src", cardMap[xAkt][yAkt]);
-        $(".card:eq(4)").attr("src", cardMap[xAkt][yAkt+1]); // gameCords
-        $(".card:eq(5)").attr("src", cardMap[xAkt][yAkt+2]);
-
-        $(".card:eq(6)").attr("src", cardMap[xAkt+1][yAkt]);
-        $(".card:eq(7)").attr("src", cardMap[xAkt+1][yAkt+1]);
-        $(".card:eq(8)").attr("src", cardMap[xAkt+1][yAkt+2]);       
-
-        yAkt = yAkt +1;
-
-            break;
-        
-        case "bottom":
-            
-            $(".card:eq(0)").attr("src", cardMap[xAkt][yAkt-1]);
-            $(".card:eq(1)").attr("src", cardMap[xAkt][yAkt]);
-            $(".card:eq(2)").attr("src", cardMap[xAkt][yAkt+1]);
-            
-            $(".card:eq(3)").attr("src", cardMap[xAkt+1][yAkt-1]);
-            $(".card:eq(4)").attr("src", cardMap[xAkt+1][yAkt]); // gameCords
-            $(".card:eq(5)").attr("src", cardMap[xAkt+1][yAkt+1]);
-
-            $(".card:eq(6)").attr("src", cardMap[xAkt+2][yAkt-1]);
-            $(".card:eq(7)").attr("src", cardMap[xAkt+2][yAkt]);
-            $(".card:eq(8)").attr("src", cardMap[xAkt+2][yAkt+1]);       
-
-            xAkt = xAkt +1;
-            break;
-    
-        default:
-            break;
-    }
-
-    loadNewCards();
-
-}
-
-function loadNewCards(){
-
-    setTimeout(function() {
-              
-    // check if top,right,left,bottom img is default, if true: load new card and delete from active
-    if($(".card:eq(1)").attr("src") == "/plane/default.png"){
-
-            $(".card:eq(1)").attr("src", activeCards[0]);
-            cardMap[xAkt-1][yAkt] = activeCards.shift(); 
-
-    }
-
-    if($(".card:eq(3)").attr("src") == "/plane/default.png"){
-        $(".card:eq(3)").attr("src", activeCards[0]);
-        cardMap[xAkt][yAkt-1] = activeCards.shift(); 
-    }
-
-    if($(".card:eq(5)").attr("src") == "/plane/default.png"){
-        $(".card:eq(5)").attr("src", activeCards[0]);
-        cardMap[xAkt][yAkt+1] = activeCards.shift(); 
-    }
-
-    if($(".card:eq(7)").attr("src") == "/plane/default.png"){
-        $(".card:eq(7)").attr("src", activeCards[0]);
-        cardMap[xAkt+1][yAkt] = activeCards.shift(); 
-    }
-}, 2000);
-
+    });
 }
 
 function changeLife(e){
@@ -273,10 +154,21 @@ function changeLife(e){
         default:
             break;
     }
-
 }
 
+function toggleMove(e){
+    
+    // check if movestate=true (if move button was pressed) and start the move menu
 
+    var cardFields = document.getElementsByClassName("cardfield");
+
+    if(!moveState){
+        moveState = true;
+        moveMenu(e); 
+        
+        
+    } 
+}
 
 function moveMenu(e){
 
@@ -298,7 +190,7 @@ function moveMenu(e){
     
     }
 
-    // if clicked on possible move -> gamemove and turn opacity back to 1
+    // if clicked on possible move -> gameMove() and turn opacity back to 1; set moveState false
 
     $(".move").on('click', function (e) {
 
@@ -316,35 +208,127 @@ function moveMenu(e){
                     $(cardFields[i]).css("opacity","1");
                 } else {
                     $(cardFields[i]).children("img").css("border","none");
-                }
-                    
+                }        
             } 
         } 
-
     });
-    
-
 }
 
-function setUpButtons(){
+function gameMove(card){
 
-    $(".chLife").on('click', function (e) {
-        changeLife(e); 
-    });
+    // shift the field dependent on pressed Card (pressed card gets moved to the middle)
 
-    $("#move").on('click', function (e) {
-        toggleMove(e);
-    });  
+    switch ($(card.target).parent().attr("id")) {
 
-    $("#turnField").on('click', function (e) {
-        turnField();
-    });  
+        case "top":
+            
+            $(".card:eq(0)").attr("src", cardMap[xAkt-2][yAkt-1]);
+            $(".card:eq(1)").attr("src", cardMap[xAkt-2][yAkt]);
+            $(".card:eq(2)").attr("src", cardMap[xAkt-2][yAkt+1]);
+            
+            $(".card:eq(3)").attr("src", cardMap[xAkt-1][yAkt-1]);
+            $(".card:eq(4)").attr("src", cardMap[xAkt-1][yAkt]); // gameCords (middle card)
+            $(".card:eq(5)").attr("src", cardMap[xAkt-1][yAkt+1]);
 
+            $(".card:eq(6)").attr("src", cardMap[xAkt][yAkt-1]);
+            $(".card:eq(7)").attr("src", cardMap[xAkt][yAkt]);
+            $(".card:eq(8)").attr("src", cardMap[xAkt][yAkt+1]);       
+
+            xAkt = xAkt -1;
+            break;
+            
+        case "left":
+
+        $(".card:eq(0)").attr("src", cardMap[xAkt-1][yAkt-2]);
+        $(".card:eq(1)").attr("src", cardMap[xAkt-1][yAkt-1]);
+        $(".card:eq(2)").attr("src", cardMap[xAkt-1][yAkt]);
+        
+        $(".card:eq(3)").attr("src", cardMap[xAkt][yAkt-2]);
+        $(".card:eq(4)").attr("src", cardMap[xAkt][yAkt-1]); // gameCords (middle card)
+        $(".card:eq(5)").attr("src", cardMap[xAkt][yAkt]);
+
+        $(".card:eq(6)").attr("src", cardMap[xAkt+1][yAkt-2]);
+        $(".card:eq(7)").attr("src", cardMap[xAkt+1][yAkt-1]);
+        $(".card:eq(8)").attr("src", cardMap[xAkt+1][yAkt]);       
+
+        yAkt = yAkt -1;
+            
+            break;
+
+        case "right":
+            
+        $(".card:eq(0)").attr("src", cardMap[xAkt-1][yAkt]);
+        $(".card:eq(1)").attr("src", cardMap[xAkt-1][yAkt+1]);
+        $(".card:eq(2)").attr("src", cardMap[xAkt-1][yAkt+2]);
+        
+        $(".card:eq(3)").attr("src", cardMap[xAkt][yAkt]);
+        $(".card:eq(4)").attr("src", cardMap[xAkt][yAkt+1]); // gameCords (middle card)
+        $(".card:eq(5)").attr("src", cardMap[xAkt][yAkt+2]);
+
+        $(".card:eq(6)").attr("src", cardMap[xAkt+1][yAkt]);
+        $(".card:eq(7)").attr("src", cardMap[xAkt+1][yAkt+1]);
+        $(".card:eq(8)").attr("src", cardMap[xAkt+1][yAkt+2]);       
+
+        yAkt = yAkt +1;
+
+            break;
+        
+        case "bottom":
+            
+            $(".card:eq(0)").attr("src", cardMap[xAkt][yAkt-1]);
+            $(".card:eq(1)").attr("src", cardMap[xAkt][yAkt]);
+            $(".card:eq(2)").attr("src", cardMap[xAkt][yAkt+1]);
+            
+            $(".card:eq(3)").attr("src", cardMap[xAkt+1][yAkt-1]);
+            $(".card:eq(4)").attr("src", cardMap[xAkt+1][yAkt]); // gameCords (middle card)
+            $(".card:eq(5)").attr("src", cardMap[xAkt+1][yAkt+1]);
+
+            $(".card:eq(6)").attr("src", cardMap[xAkt+2][yAkt-1]);
+            $(".card:eq(7)").attr("src", cardMap[xAkt+2][yAkt]);
+            $(".card:eq(8)").attr("src", cardMap[xAkt+2][yAkt+1]);       
+
+            xAkt = xAkt +1;
+            break;
+    
+        default:
+            break;
+    }
+
+    loadNewCards();
+}
+
+function loadNewCards(){
+
+    setTimeout(function() {
+              
+    // check if top,right,left,bottom img is default, if true: load new card and delete from activeCards
+
+    if($(".card:eq(1)").attr("src") == "/plane/default.png"){
+
+            $(".card:eq(1)").attr("src", activeCards[0]);
+            cardMap[xAkt-1][yAkt] = activeCards.shift(); 
+
+    }
+
+    if($(".card:eq(3)").attr("src") == "/plane/default.png"){
+        $(".card:eq(3)").attr("src", activeCards[0]);
+        cardMap[xAkt][yAkt-1] = activeCards.shift(); 
+    }
+
+    if($(".card:eq(5)").attr("src") == "/plane/default.png"){
+        $(".card:eq(5)").attr("src", activeCards[0]);
+        cardMap[xAkt][yAkt+1] = activeCards.shift(); 
+    }
+
+    if($(".card:eq(7)").attr("src") == "/plane/default.png"){
+        $(".card:eq(7)").attr("src", activeCards[0]);
+        cardMap[xAkt+1][yAkt] = activeCards.shift(); 
+    }
+}, 2000);
 }
 
 function turnField(){
 
-    
     if($("#fieldwrapper").css("rotate") == "180deg"){
         $("#fieldwrapper").removeClass("flip");
         $("#highlightCard").removeClass("flipH");
@@ -355,17 +339,48 @@ function turnField(){
     }
 }
 
-function toggleMove(e){
+function toggleHighlightCard(card){
 
-        var cardFields = document.getElementsByClassName("cardfield");
+    // openHighlightCard if there ist no on screen
 
-        if(!moveState){
-            moveState = true;
-            moveMenu(e); 
-            
-            
-        } 
+    if($(card.target).attr("src") != "/plane/default.png"){
+        
+        if($("#highlightCard").length == 0){
+            openHighlightCard(card);
+        }      
+    }
 }
+
+function openHighlightCard(card){
+
+    // add highlightcard with onClick remove
+
+    var showSrc = $(card.target).attr("src");
+        
+    $("body").prepend("<img src='" + showSrc + "' id='highlightCard' class='transformH' onclick='this.remove()'>");
+             
+    // if the field is turned right now, turn the Highlightcard too
+
+    if($("#fieldwrapper").css("rotate") == "180deg"){
+        $("#highlightCard").removeClass("transoformH")
+        $("#highlightCard").attr("class","flipH");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         

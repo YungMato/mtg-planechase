@@ -7,22 +7,16 @@
     #fieldwrapper{
         width: 45vw !important;
     }
-
-
-        
+       
     .card {
-     height: 20vh !important;
-        
+        height: 20vh !important;
     }
 
-    #highlightCard{
-    
+    #highlightCard{    
         top: -13vh !important;
         left: 28vh !important;
-    
-        height: 120vh !important;
-        
-    
+
+        height: 120vh !important;    
     }
     
 
@@ -48,7 +42,6 @@
 
     .chLife img {
         height:12vh !important;
-
     }
 
     .menuLeft, .menuRight{
@@ -56,7 +49,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
     }
 
     .wrapper{
@@ -67,7 +59,7 @@
 
 }
 
-* {
+* { 
     margin: 0;
     padding: 0;
 }
@@ -81,12 +73,7 @@ body {
 
     overflow: hidden;
 
-
-
-
     font-family: 'MedievalSharp', cursive;
-
-
 }
 
 
@@ -110,25 +97,26 @@ h1 {
 
 .chLife img{
     height: 100px;
+
     cursor: pointer;
 }
 
 
 .wrapper {
-
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    padding-top: 10px;
+
     width: 100vw;
     height: 90vh;
-    padding-top: 10px;
 }
 
 #fieldwrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .cardfield {
@@ -151,47 +139,44 @@ h1 {
 
 .card {
     rotate: 90deg;
-    height: 35vh;
+
+    height: 30vh;
 }
 
 #highlightCard{
-    
     position: absolute;
-
     top: -15%;
-    left: 28%;
+    left: 22.5%;
     z-index: 5;
 
     rotate: 90deg;
+
     height: 130vh;
-    
-
 }
 
 
 
-.menuLeft{
-
-    height: 90vh;
-    width: 15vw;
+.menuLeft, .menuRight{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
-
-}
-
-.menuRight{
     height: 90vh;
     width: 15vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
+
 
 .life{
     display:flex;
     flex-direction: column;
+}
+
+.life h1{
+    border: solid 6px rgb(88, 88, 88);
+    border-radius: 30%;
+    
+    background-color: #000000;
+    color: white;
 }
 
 .buttonsRight{
@@ -221,9 +206,3 @@ h1 {
     transform: rotate(180deg);
 }
 
-.life h1{
-    border: solid 6px rgb(88, 88, 88);
-    border-radius: 30%;
-    background-color: #000000;
-    color: white;
-}
