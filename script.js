@@ -1,3 +1,12 @@
+/**
+ *  ToDos:
+ *      -Get Cards per API
+ *      -Better UI
+ *      -Upgrade project to react 
+ * 
+ */
+
+
 // Options
 
     // Player Life
